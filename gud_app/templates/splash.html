@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>commongüd - Welcome</title>
+    {% load static %}
+    <script src="{% static 'js/script.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+
+<style>
+    body{
+        font-family: Montserrat, Helvetica, sans-serif;
+    }
+    
+    .fill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden
+    }
+
+    .fill img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%
+    }
+
+    .container-sm {
+        margin-top: 100px;
+        margin-left: 100px;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:link {
+        color: black;
+    }
+
+    a:hover {
+        color: #b7ae9a;
+    }
+
+    a:active {
+        color: #998665;
+    }
+
+    .nav {
+        margin-left: 500px;
+    }
+
+    .position-absolute{
+        margin-left: 50px
+    }
+</style>
+
+<body>
+    <div class="fill">
+        <img src="https://images.pexels.com/photos/60342/pexels-photo-60342.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            alt="bw chair">
+    </div>
+
+    <div class="photo">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <a href="/us"><img class="logo" src="{% static 'images/logo.png' %}" alt="gud logo"></a>
+            <div class="position-absolute top-75 end-0 translate-middle">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/us/men">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/us/women">Women</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/us/mission">Our Mission</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
