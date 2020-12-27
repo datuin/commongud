@@ -72,6 +72,8 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+
+
 class Wishlist(models.Model):
     wish_product = models.ForeignKey(Product, related_name="wishlist", on_delete = models.CASCADE)
     quantity = models.IntegerField()

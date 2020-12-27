@@ -54,11 +54,6 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-class Category(models.Model):
-    name = models.CharField(max_length=45)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
 class Product(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=45)
@@ -71,6 +66,11 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+
+class Category(models.Model):
+    name = models.CharField(max_length=45)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Wishlist(models.Model):
     wish_product = models.ForeignKey(Product, related_name="wishlist", on_delete = models.CASCADE)
