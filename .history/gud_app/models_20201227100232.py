@@ -1,5 +1,4 @@
 from django.db import models
-import re
 
 # Create your models here.
 
@@ -54,24 +53,6 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-class Category(models.Model):
-    name = models.CharField(max_length=45)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Product(models.Model):
-    name = models.CharField(max_length=45)
-    description = models.CharField(max_length=45)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    product_category = models.ForeignKey(Category,related_name="products", on_delete= models.CASCADE)
-    user = models.ForeignKey(User, related_name="products_from_user", on_delete= models.CASCADE)
-    size = models.CharField(max_length=45)
-    color = models.CharField(max_length=45)
-    gender = models.CharField(max_length=45)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()
-
-class Wishlist(models.Model):
-    wish_product = models.ForeignKey(Product, related_name="wishlist", on_delete = models.CASCADE)
-    quantity = models.IntegerField()
+# class Products(models.Model):
+#     name = modes.CharField(max_length=45)
+    
