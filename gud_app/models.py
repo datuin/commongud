@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import (AbstractUser, BaseUserManager)
 import re
 
 # Create your models here.
@@ -8,50 +9,61 @@ import re
 # Products - Category 1 to many
 # Wishlist - Products 1 to many
 
-class UserManager(models.Manager):
-    def validateUser(self, postData):
-        errors = {}
+class UserManager(BaseUserManager):
 
-        if len(postData['first']) == 0:
-            errors['first'] = 'First Name is required'
-        elif len(postData['first']) < 2:
-            errors['first'] = 'First Name must be at least 2 characters.'
-        if len(postData['last']) == 0:
-            errors['last'] = 'Last Name is required'
-        elif len(postData['last']) < 2:
-            errors['last'] = 'Last Name must be at least 2 characters.'
-        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-        if not EMAIL_REGEX.match(postData['email']):
+    def _is_email_valid(email):
+        regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        return regex.match(email)
+
+    def validate_user(self, postData):
+        errors = {}
+        if len(postData['first_name']) < 2:
+            errors['first_name'] = 'first name must be at least 2 characters.'
+        if len(postData['last_name']) < 2:
+            errors['last_name'] = 'last name must be at least 2 characters.'
+        if not UserManager._is_email_valid(postData['email']):
             errors['email'] = "Invalid email address"
-        email_Exists = User.objects.filter(email=postData['email'])
-        if email_Exists:
-            errors['email_Exists'] = 'Invalid email address. Email has already been used. '
+        elif User.objects.filter(email=postData['email']).exists():
+            errors['email_exist'] = 'Invalid email address. email has already been used.'
         if len(postData['password']) < 8:
             errors['password'] = 'Password must be at least 8 characters'
-        if len(postData['password']) != len(postData['confirm_password']):
-            errors['confirm_password'] = 'Password does not match'
+        if postData['password'] != postData['confirm_pass']:
+            errors["confirm_pass"] = "Password confirm does not match"
         return errors
 
-    def validateLogin(self, postData):
+    def validate_login(self, postData):
         errors = {}
-
-        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-        if not EMAIL_REGEX.match(postData['email']):
-            errors['theEmail'] = "Invalid email address"
-        email_Exists = User.objects.filter(email=postData['email'])
-        if not email_Exists:
-            errors['theEmail'] = 'Email does not exist'
-        if len(postData['password']) < 8:
-            errors['thePassword'] = 'Incorrect password.'
+        # validating email
+        if not UserManager._is_email_valid(postData['email_login']):
+            errors['email'] = "Invalid email address"
+        #if email exist
+        if not User.objects.filter(email = postData['email_login']).exists():
+            errors['email_notexist']= "This email does not exist"
         return errors
 
-class User(models.Model):
-    first = models.CharField(max_length=25)
-    last = models.CharField(max_length=25)
-    email = models.CharField(max_length=45)
-    password = models.CharField(max_length=15)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    def create_user(self, email, password, first_name, last_name):
+        user = self.model(
+            email = self.normalize_email(email),
+            first_name = first_name,
+            last_name = last_name
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+class User(AbstractUser):
+    # first_name - first
+    # last_name - last
+    # email
+    # password
+    # date_joined - created_at
+    # updated_at, why do we need this field?
+    username = None
+    email = models.EmailField(max_length=45, unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
     objects = UserManager()
 
 class Category(models.Model):

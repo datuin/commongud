@@ -52,19 +52,28 @@
                     <input class="form form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn" type="submit">Search</button>
                     <a class="nav-link" id ="wishlist" href="#"><i href="#" class="fa fa-heart " aria-hidden="true"></i></a>
+                    <p class="user_name">Hello, {{user.first_name}} </p>
                     <a class="nav-link" id ="user_icon" href="#"><i href="#" class="fa fa-user " aria-hidden="true"></i></a>
+                    {% if user.is_authenticated %}
                     <div class="form-popup" id="login-form">
-                        <form action="" method="">
+                            <div class="text-center">
+                                <a href=""><small id="emailHelp" class="form-text text-muted">log out</small></a>
+                            </div>
+                    </div>
+                    {% else %}
+                    <div class="form-popup" id="login-form">
+                        <form action="/login" method="post">
+                            {% csrf_token %}
                             <h5 class="text-center" id = "title_login">Login</h5>
                             <div class="form-group">
                                 <label>Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                <input type="email" class="form-control" name="email_login"  placeholder="Enter email">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control" name="password_login"  placeholder="Password">
                             </div>
                             <br>
                             <div class="text-center">
@@ -75,6 +84,7 @@
                             </div>
                         </form>
                     </div>
+                    {% endif %}
                 </form>
         </div>
     </nav>
