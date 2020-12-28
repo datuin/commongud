@@ -63,7 +63,7 @@ class Product(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=45)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    image = models.ImageField(default=None)
+    field_name = models.ImageField(default=None)
     product_category = models.ForeignKey(Category,related_name="products", on_delete= models.CASCADE)
     user = models.ForeignKey(User, related_name="products_from_user", on_delete= models.CASCADE)
     size = models.CharField(max_length=45)
