@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>commongüd - Contact Us</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+
+<style>
+    body {
+        font-family: Montserrat, Helvetica, sans-serif;
+    }
+
+    .navbar {
+        height: 75px;
+    }
+
+    .logo {
+        width: 10%;
+        height: 10%;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:link {
+        color: #b7ae9a;
+    }
+
+    a:hover {
+        color: #b7ae9a;
+    }
+
+    a:active {
+        color: #998665;
+    }
+
+    .nav {
+        margin-left: 500px;
+    }
+
+    .btn {
+        background-color: #b7ae9a;
+        color: white;
+    }
+
+    .btn:hover {
+        background-color: #998665;
+        color: white;
+    }
+
+    .contact {
+        height: 970px;
+    }
+
+    .d-flex {
+        background-color: #f3f3f3;
+        height: 100%;
+    }
+
+    .mission {
+        margin-top: 50px;
+        height: 600px;
+    }
+
+    .footer {
+        height: 150px;
+        margin: auto;
+        padding-top: 20px;
+        background-color:#998665;
+    }
+</style>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg" style="background-color: hsl(0, 0%, 95%);">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="navbar-brand" href="/us">
+                    <img src="{% static 'images/logo.svg' %}" alt="logo" width="250" height="100">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/us/men">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/us/women">Women</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="submit">Search</button>
+                    <a class="nav-link" href="#"><i href="#" class="fa fa-user" aria-hidden="true"></i></a>
+                </form>
+                <a data-toggle="modal" data-target=".bs-example-modal-sm" role="button" class="">Launch demo modal</a>
+                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Registration</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="reg-form">
+                                    <div class="form-group">
+                                        <label for="user-name" class="control-label">Full Name:</label>
+                                        <input type="text" class="form-control" id="user-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="control-label">Email Address:</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <div class="position-relative">
+        <!-- <div class="parallax"></div> -->
+        <div class="d-flex justify-content-center">
+            <div class="contact container-md">
+                <div class="mission container-md">
+                    <h1>Contact Us</h1>
+                    <p>As a company that values their patrons, Commongüd would love to hear feedback from you to make your experience better and continue making top of the line goods for you to enjoy. if you want to collaborate on future project with us or have any comments and/or concerns with our product, please don't hesitate to leave a message below:
+                    </p>
+
+                    <h2>placeholder form. create a form here for user to contact company about any questions or concerns.</h2>
+
+
+                    <form action='' method=''>
+                        {% csrf_token %}
+                        
+                        <div class="row mb-3">
+                            <label for="first" class="col-sm-4 col-form-label">First Name:</label>
+                            <div class="col-sm-8">
+                                <input name="first" type="text" class="form-control">
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'first' %}
+                                    <p style="color: red">* {{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="last" class="col-sm-4 col-form-label">Last Name:</label>
+                            <div class="col-sm-8">
+                                <input name="last" type="text" class="form-control">
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'last' %}
+                                    <p style="color: red">* {{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="email" class="col-sm-4 col-form-label">Email:</label>
+                            <div class="col-sm-8">
+                                <input name="email" type="text" class="form-control">
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'email' %}
+                                    <p style="color: red">* {{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'email_Exists' %}
+                                    <p style="color: red">* {{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-4 col-form-label">Message:</label>
+                            <div class="col-sm-8">
+                                <input name="" type="type" class="form-control">
+                                <!-- {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'password' %}
+                                    <p style="color: red">* {{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %} -->
+                            </div>
+                        </div>
+                        <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary centered">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
