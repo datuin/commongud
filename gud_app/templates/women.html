@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>commongüd - Our Mission</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+
+<style>
+    body {
+        font-family: Montserrat, Helvetica, sans-serif;
+    }
+
+    .navbar {
+        height: 75px;
+    }
+
+    .logo {
+        width: 10%;
+        height: 10%;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:link {
+        color: #b7ae9a;
+    }
+
+    a:hover {
+        color: #b7ae9a;
+    }
+
+    a:active {
+        color: #998665;
+    }
+
+    .nav {
+        margin-left: 500px;
+    }
+
+    .btn {
+        background-color: #b7ae9a;
+        color: white;
+    }
+
+    .btn:hover {
+        background-color: #998665;
+        color: white;
+    }
+
+    .parallax {
+        /* The image used */
+        background-image: url("https://images.pexels.com/photos/2112648/pexels-photo-2112648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+
+        /* Set a specific height */
+        height: 800px;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .d-flex {
+        background-color: #f3f3f3;
+        height: 100%;
+    }
+
+    .mission {
+        margin-top: 50px;
+        height: 600px;
+    }
+</style>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg" style="background-color: hsl(0, 0%, 95%);">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="navbar-brand" href="/us">
+                    <img src="{% static 'images/logo.svg' %}" alt="logo" width="250" height="100">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/us/men">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/us/women">Women</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="submit">Search</button>
+                    <a class="nav-link" href="#"><i href="#" class="fa fa-user" aria-hidden="true"></i></a>
+                </form>
+                <a data-toggle="modal" data-target=".bs-example-modal-sm" role="button" class="">Launch demo modal</a>
+                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Registration</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="reg-form">
+                                    <div class="form-group">
+                                        <label for="user-name" class="control-label">Full Name:</label>
+                                        <input type="text" class="form-control" id="user-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="control-label">Email Address:</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <div class="product_display">
+        <div class="allproducts">
+            <div class="infohere">
+                <div class="container">
+                    <br>
+                    <h1 style="margin-left: 45%;">Women</h1>
+                    <div class="container">
+                        <div class="row">
+                            <h2>Dresses</h2>
+                            <div style="display: inline-flex;" class="col-sm">
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F14%2F9f%2F149f39bb769de5a46f8085c2631d59ccfefb1062.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_dresses_beachdresses%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fb1%2F0f%2Fb10fb1d555424cf4c0b82f26194eaae50e88b794.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_dresses_shortdresses%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F3a%2F91%2F3a9123a77bbb9df6ab6897c8c756fe9cdce19e9d.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>Shirts</h3>
+                            <div style="display: inline-flex;" class="col-sm">
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F2d%2F50%2F2d50a2447231a88c8c8dfc4b3f85ecd6c76d8dbc.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_shortsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="green_tshirt">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <h5 class="card-title">{{prodcut.price}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ff5%2Fc4%2Ff5c4939114fcc731acfada4ebb68f1da42cad909.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_shortsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="BlackTshirt">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <h5 class="card-title">{{prodcut.price}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F00%2F2c%2F002ca3246e163cdfc5da0689ab0b7e6ca7f2767e.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_bestbasics%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>Pants</h3>
+                            <div style="display: inline-flex;" class="col-sm">
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fcc%2Fc2%2Fccc29d1d3a231d3f6a17883340eb75a4ef6cb2f9.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_trousers_chinos_slim_all%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="business casual">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <h5 class="card-title">{{prodcut.price}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fd1%2Fd6%2Fd1d60fb56260c0b8d7c67941d6c8da4b7bd8b1cc.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="BlueJeans">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <h5 class="card-title">{{prodcut.price}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 24rem;">
+                                    <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F36%2Fcc%2F36ccefd598cb293f960ead9c89086277322e59b1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                                        class="card-img-top" alt="Black Cargo">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{prodcut.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <button type="submit" class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
