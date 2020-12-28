@@ -39,10 +39,10 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid register">
+    <div class="container-fluid">
         <div class="container  d-flex justify-content-around">
             <div class="container-md reg">
-                <form class="form-padding" action="/registration" method="post">
+                <form class="form-padding" action="/signup" method="post">
                     <br>
                     {% csrf_token %}
                     <input type="hidden" name="action" value="register">

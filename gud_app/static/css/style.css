@@ -109,6 +109,10 @@ footer {
     height:50px;
     margin-bottom:20px;
 }
+.user_name{
+    margin-top:10px;
+    margin-bottom: 0px;
+}
 
 
 /*********************************** Code for the footer div **********************************************/
@@ -157,4 +161,11 @@ footer {
 
 .form-padding div{
     padding:3px;
+}
+/*********************************** Code for the messages **********************************************/
+.alert-success {
+    color: white;
+    background-color: #b7ae9a;
+    border-color: #998665;
+    margin-top: 5px;
 }

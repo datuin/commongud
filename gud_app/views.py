@@ -1,4 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
+from gud_app.models import User
+from django.contrib.auth import authenticate, login
+import bcrypt
 
 def splash(request):
     return render(request, 'splash.html')
@@ -18,34 +22,36 @@ def mission(request):
 def registration_template(request):
     return render(request,'registration.html')
 
-def register(request):
-    errors = User.objects.validateUser(request.POST)
-
-    if len(errors) > 0:
+def registration_user(request):
+    errors = User.objects.validate_user(request.POST)
+    if len(errors)>0:
         for key, value in errors.items():
             messages.error(request, value, extra_tags=key)
-        return redirect('/')
-    first = request.POST['first']
-    last = request.POST['last']
-    email = request.POST['email']
-    password = request.POST['password']
-    pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-    User.objects.create(first=first, last=last, email=email, password=pw_hash)
-    user=User.objects.last()
-    request.session['uid'] = user.id
-    return redirect('/dashboard')
+        return redirect('/registration')
 
-def login(request):
-    errors = User.objects.validateLogin(request.POST)
+    user = User.objects.create_user(
+        email=request.POST['email'],
+        password=request.POST['password'],
+        first_name=request.POST['first_name'],
+        last_name=request.POST['last_name']
+    )
+    messages.success(request, "Successfully registered", extra_tags='register_user')
+    return redirect('/registration')
 
+def login_user(request):
+    errors = User.objects.validate_login(request.POST)
     if errors:
         for key, value in errors.items():
             messages.error(request, value, extra_tags=key)
-        return redirect('/')
-    user = User.objects.filter(email=request.POST['email'])
-    if user:
-        logged_user = user[0]
-        if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
-            request.session['uid'] = logged_user.id
-            return redirect('/dashboard')
-    return redirect('/')
+        return redirect("/registration")
+
+    email = request.POST['email_login']
+    password = request.POST['password_login']
+    user = authenticate(request, username=email, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('/us')
+    else:
+        messages.error(request,"Incorrect password", extra_tags='password_not_match')
+        # what if user is registered already but typed the wrong password
+        return redirect('/registration')
