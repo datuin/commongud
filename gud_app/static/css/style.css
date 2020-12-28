@@ -42,6 +42,10 @@ a:active {
     color: white;
 }
 
+.form {
+    width:250px;
+}
+
 /*********************************** Code for the index page **********************************************/
 
 .parallax {
@@ -101,7 +105,7 @@ footer {
     height: 150px;
     background-color: #998665;
     margin: auto;
-    padding-top: 20px;
+    padding-top:50px;
 }
 
 .fSmile {
@@ -116,11 +120,6 @@ footer {
 
 
 /*********************************** Code for the footer div **********************************************/
-.fSmile {
-    width:50px;
-    height:50px;
-    margin-bottom:20px;
-}
 .footer {
     height: 150px;
     background-color: #998665;
@@ -131,6 +130,43 @@ footer {
     justify-content: center;
     position: absolute;
     bottom: 0;
+}
+
+.social_list {
+    list-style-type:none;
+    margin: auto;
+    padding: 0px;
+}
+
+.social_list li{
+    display: inline-flex;
+    margin: 0 3px;
+    align-items: center;
+}
+
+.social{
+    width:25px;
+    height:25px;
+}
+
+.bottomNav{
+    list-style-type:none;
+}
+.bottomNav li a{
+    text-decoration:none;
+}
+
+.bottomNav li a:link{
+    color:white;
+}
+.bottomNav a:visited{
+    color:black;
+}
+.bottomNav a:hover{
+    color:#b7ae9a;
+}
+.bottomNav a:active{
+    color:#998665;
 }
 
 /*********************************** Code for the login popup **********************************************/

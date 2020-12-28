@@ -21,7 +21,7 @@
                     <img src="{% static 'images/logo.svg' %}" alt="logo" width="250" height="100">
                 </a>
             </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="container-sm" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/us/men">Men</a>
@@ -29,10 +29,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/us/women">Women</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="/us/women">Accesories</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
@@ -47,8 +47,9 @@
                         </ul>
                     </li> -->
                 </ul>
+            </div>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn" type="submit">Search</button>
                     <a class="nav-link" id ="wishlist" href="#"><i href="#" class="fa fa-heart " aria-hidden="true"></i></a>
                     <p class="user_name">Hello, {{user.first_name}} </p>
@@ -85,7 +86,6 @@
                     </div>
                     {% endif %}
                 </form>
-            </div>
         </div>
     </nav>
     <div class="trends position-relative">
@@ -100,21 +100,42 @@
             </div>
         </div>
     </div>
-    <div class="position-relative container-fluid d-flex justify-content-center">
-        <div class="position-relative container-fluid">
-            hi
-        </div>
-        <div class="position-relative container-fluid">
-            hi
-        </div>
-    </div>
 </body>
 <footer>
-    <div class="position-relative container-fluid d-flex justify-content-center">
-        <img class="fSmile" src="{% static 'images/umlaut.svg' %}"><br>
-    </div>
-    <div class="position-relative container-fluid d-flex justify-content-center">
-        <h6>Add a smile with your style.</h6>
+    <div class="position-relative container-sm d-flex justify-content-center">
+        <!-- <div class="position-relative container-fluid">
+            <img class="fSmile" src="{% static 'images/umlaut.svg' %}"><br>
+        </div> -->
+        <div class="position-relative container-fluid">
+            <h6>Stay Connected</h6>
+            <ul class="social_list">
+                <li><a href=""><img class="social" src="https://cdn2.iconfinder.com/data/icons/social-media-2151/512/2_Media_social_website_instagram-512.png"></a></li>
+                <li><a href=""><img class="social" src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Twitter_social_media_logo-512.png"></a></li>
+                <li><a href=""><img class="social" src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Facebook_social_media_logo-512.png"></a></li>
+                <li><a href=""><img class="social" src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Youtube_svg-512.png"></a></li>
+            </ul>
+        </div>
+        <div class="position-relative container-fluid">
+            <h6>Shop</h6>
+            <list class ="bottomNav">
+                <li><a href="">Men</a></li>
+                <li><a href="">Women</a></li>
+            </list>
+        </div>
+        <div class="position-relative container-fluid">
+            <h6>About commongüd</h6>
+            <list class ="bottomNav">
+                <li><a href="">Our Mission</a></li>
+                <li><a href="">Contact Us</a></li>
+            </list>
+        </div>
+        <div class="position-relative container-fluid">
+            <h6>Members</h6>
+            <list class ="bottomNav">
+                <li><a href="">Register</a></li>
+                <li><a href="">Log In</a></li>
+            </list>
+        </div>
     </div>
 </footer>
 
