@@ -262,3 +262,15 @@ footer {
     color: black;
     font-weight: bold;
 }
+
+.carousel-inner{
+    height:1200px;
+}
+
+.dd-block{
+    position: relative;
+    padding-bottom:75px;
+}
+
+.carousel-item img {
+}
