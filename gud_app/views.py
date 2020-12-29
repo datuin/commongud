@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from gud_app.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 import bcrypt
 
 def splash(request):
@@ -50,8 +51,13 @@ def login_user(request):
     user = authenticate(request, username=email, password=password)
     if user is not None:
         login(request, user)
-        return redirect('/us')
+        page = request.POST['url']
+        return redirect(page)
     else:
         messages.error(request,"Incorrect password", extra_tags='password_not_match')
         # what if user is registered already but typed the wrong password
         return redirect('/registration')
+
+def logout_user(request):
+    logout(request)
+    return redirect("/us")
