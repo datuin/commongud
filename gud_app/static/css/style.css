@@ -205,3 +205,37 @@ footer {
     border-color: #998665;
     margin-top: 5px;
 }
+
+
+/*********************************** Code for the dashboard **********************************************/
+.secondary {
+    margin-top:20px;
+    margin-bottom:50px;
+}
+
+.showall {
+    margin-right:500px;
+    position:relative;
+    left:800px;
+}
+
+.btn {
+    background-color: #998665;
+    color: white;
+    border: none;
+}
+
+.btn:link {
+    background-color: #998665;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color:#b7ae9a;
+    color: white;
+}
+
+.dashboardProduct {
+    margin-top: 20px;
+}

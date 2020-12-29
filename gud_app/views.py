@@ -55,3 +55,15 @@ def login_user(request):
         messages.error(request,"Incorrect password", extra_tags='password_not_match')
         # what if user is registered already but typed the wrong password
         return redirect('/registration')
+
+def orders(request):
+    return render(request, 'dashboard_orders.html')
+
+def orderDetail(request):
+    return render(request, 'dashboard_orders_show.html')
+
+def products(request):
+    return render(request, 'dashboard_products.html')
+
+def add(request):
+    return render(request, 'dashboard_add_product.html')

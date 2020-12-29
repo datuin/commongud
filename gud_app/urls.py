@@ -9,5 +9,9 @@ urlpatterns = [
     path('us/mission', views.mission),
     path('registration',views.registration_template),
     path('signup', views.registration_user),
-    path('login', views.login_user)
+    path('login', views.login_user),
+    path('dashboard/orders', views.orders),
+    path('dashboard/orders/show', views.orderDetail),
+    path('dashboard/products', views.products),
+    path('dashboard/products/add', views.add),
 ]
