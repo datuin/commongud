@@ -19,7 +19,8 @@ urlpatterns = [
     path('dashboard/products/add', views.add_template),
     path('go_to_add_product',views.go_to_add_product),
     path('add_product', views.add_product),
-    path('delete/<int:product_id>',views.delete_product)
+    path('delete/<int:product_id>',views.delete_product),
+    path('addcategory',views.add_categories)
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

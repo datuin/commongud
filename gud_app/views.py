@@ -124,3 +124,7 @@ def delete_product(request,product_id):
     messages.success(request,"You delete this product", extra_tags='product_deleted')
     return redirect("/dashboard/products")
 
+def add_categories(request):
+    name= request.POST['addcategory']
+    Category.objects.create(name=name)
+    return redirect("/dashboard/products/add")

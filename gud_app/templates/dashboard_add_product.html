@@ -39,6 +39,21 @@
             </div>
         </div>
     </nav>
+    <form action="/addcategory" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+        <h6 class="text-center">Add a Category</h6>
+        <div class="row mb-3">
+            <label for="name" class="col-sm-4 col-form-label">Category name:</label>
+            <div class="col-sm-8">
+                <input name="addcategory" type="text" class="form-control">
+            </div>
+            <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit"  style="margin-top:10px" class="btn add-btn centered">Add</button>
+            </div>
+    </div>
+    </form>
     <div class="position-relative">
         <div class="dashboardProduct container-sm">
             <h6 class="text-center">Add a Product</h6>
