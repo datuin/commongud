@@ -239,3 +239,26 @@ footer {
 .dashboardProduct {
     margin-top: 20px;
 }
+
+/*********************************** Code for contact **********************************************/
+.banner {
+    height:955px;
+    background-image: url("https://images.pexels.com/photos/1884583/pexels-photo-1884583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content {
+    margin-left:1000px;
+    padding: 50px;
+    padding-top:100px;
+    padding-left: 600px;
+}
+
+.contactUs{
+    font-size: 32px;
+    color: black;
+    font-weight: bold;
+}

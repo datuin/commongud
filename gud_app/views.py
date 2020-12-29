@@ -56,6 +56,9 @@ def login_user(request):
         # what if user is registered already but typed the wrong password
         return redirect('/registration')
 
+def contact(request):
+    return render(request, 'contact_us.html')
+
 def orders(request):
     return render(request, 'dashboard_orders.html')
 
