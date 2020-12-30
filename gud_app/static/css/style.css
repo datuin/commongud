@@ -328,8 +328,23 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
 }   
-/*********************************** Code for the Carousel in product_detail **********************************************/
+/*********************************** Code for the all products **********************************************/
+.product_display {
+    margin-bottom: 75px;
+}
 
+.card {
+    padding: 4px;
+    border: none;
+    margin: 10px;
+}
+
+.mensproducts{
+    width:277px;
+    height:341px;
+}
+
+/*********************************** Code for the Carousel in product_detail **********************************************/
 .main-container{
     height: 100vh;
 }
@@ -341,6 +356,7 @@ footer {
 .getback{
     margin:20px
 }
+
 /*********************************** Code for product_detail **********************************************/
 .details_product{
     width: 500px;
@@ -372,6 +388,15 @@ footer {
 .wishtag i{
     padding-top:15px;
     padding-left:15px;
+}
+
+.input-group{
+    margin-left:5px;
+    width:100px;
+}
+
+.main-container{
+    margin-top:50px;
 }
 /*********************************** Code for order_template **********************************************/
 
@@ -406,9 +431,3 @@ footer {
 .bold{
     font-weight: bold;
 }    
-
-
-.mensproducts{
-    width:350px;
-    height:600px;
-}
