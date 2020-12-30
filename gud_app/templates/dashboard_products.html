@@ -76,9 +76,10 @@
                         <!-- This nested loop is wrong, here you may display one single image -->
                         <!-- and then show all the images for each product at /edit  -->
                         {% for product_display in products %}
-                        {% for image in images%}
                         <tr>
-                            <th><img src="{{ image.image.url }}" alt="logo" width="50" height="50"></th>
+                            {% with product_display.images.all|first as image %}
+                            <th><img src="{{ image.image.url }}"alt="logo" width="50" height="50">
+                            {% endwith %}
                             <td scope="row">{{product_display.id}}</td>
                             <td>{{product_display.name}}</td>
                             <td>{{product_display.product_category.name}}</td>
@@ -88,7 +89,6 @@
                                 <a id="delete-product"  href="/delete/{{product_display.id}}">delete</a>
                             </td>
                         </tr>
-                        {% endfor %}
                         {% endfor %}
                     </tbody>
                 </table>

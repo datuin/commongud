@@ -106,9 +106,10 @@ class Category(models.Model):
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user_order = models.ForeignKey(User, related_name="orders_from_user", on_delete= models.CASCADE)
-    quantity = models.CharField(max_length=45)
+    quantity =models.IntegerField()
     total =  models.CharField(max_length=45)
-    #product_order = all products from this order
+    size = models.CharField(max_length=45)
+    #products = all products from this order
 
 class Product(models.Model):
     name = models.CharField(max_length=45)
@@ -116,12 +117,18 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     product_category = models.ForeignKey(Category,related_name="products", on_delete= models.CASCADE)
     user = models.ForeignKey(User, related_name="products_from_user", on_delete= models.CASCADE)
-    product_order = models.ManyToManyField(Order, related_name="orders")
+    product_order = models.ManyToManyField(Order, related_name="products_order")
     size = models.CharField(max_length=45)
     color = models.CharField(max_length=45)
     gender = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, related_name="order_items", on_delete= models.CASCADE)
+    quantity = models.IntegerField()
+    price = price = models.DecimalField(max_digits=5, decimal_places=2)
+    size = models.CharField(max_length=45)
 
 class Wishlist(models.Model):
     wish_product = models.ForeignKey(Product, related_name="wishlist", on_delete = models.CASCADE)

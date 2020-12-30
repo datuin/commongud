@@ -22,7 +22,9 @@ urlpatterns = [
     path('add_product', views.add_product),
     path('delete/<int:product_id>',views.delete_product),
     path('addcategory',views.add_categories),
-    path('product_detail/<int:product_id>',views.product_detail_template)
+    path('product_detail/<int:product_id>',views.product_detail_template),
+    path('cart',views.orders_template),
+    path('add_tocart',views.add_tocart)
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
