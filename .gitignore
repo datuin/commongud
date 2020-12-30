@@ -1,3 +1,4 @@
 .history/
 gud_app/__pycache__/
 commongud/__pycache__/
+*.pyc

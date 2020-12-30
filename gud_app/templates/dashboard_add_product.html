@@ -39,12 +39,26 @@
             </div>
         </div>
     </nav>
+    <form action="/addcategory" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+        <h6 class="text-center">Add a Category</h6>
+        <div class="row mb-3">
+            <label for="name" class="col-sm-4 col-form-label">Category name:</label>
+            <div class="col-sm-8">
+                <input name="addcategory" type="text" class="form-control">
+            </div>
+            <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit"  style="margin-top:10px" class="btn add-btn centered">Add</button>
+            </div>
+    </div>
+    </form>
     <div class="position-relative">
         <div class="dashboardProduct container-sm">
             <h6 class="text-center">Add a Product</h6>
-            <form action='register' method='post'>
+            <form action='/add_product' method='post' enctype="multipart/form-data">
                 {% csrf_token %}
-                
                 <div class="row mb-3">
                     <label for="name" class="col-sm-4 col-form-label">Name:</label>
                     <div class="col-sm-8">
@@ -85,9 +99,62 @@
                     </div>
                 </div>
                 <div class="row mb-3">
+                    <label  class="col-sm-4 col-form-label">Size:</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" name="size" aria-label="Default select example">
+                            <option selected>Select a size</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                        </select>
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'size' %}
+                            <p style="color: red">* {{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Color:</label>
+                    <div class="col-sm-8">
+                        <input name="color" type="text" class="form-control">
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'color' %}
+                            <p style="color: red">* {{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label  class="col-sm-4 col-form-label">Gender:</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" name="gender" aria-label="Default select example">
+                            <option selected>Select gender</option>
+                            <option value="men">Men</option>
+                            <option value="woman">Woman</option>
+                        </select>
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'gender' %}
+                            <p style="color: red">* {{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mb-3">
                     <label for="product_category" class="col-sm-4 col-form-label">Category:</label>
                     <div class="col-sm-8">
-                        <input name="product_category" type="text" class="form-control">
+                        <select class="form-select" name="category" aria-label="Default select example">
+                            <option selected>Select a Category</option>
+                            {% for category in categories %}
+                            <option value="{{category.id}}">{{category.name}}</option>
+                            {% endfor %}
+                        </select>
                         {% if messages %}
                         {% for message in messages %}
                             {% if message.extra_tags == 'product_category' %}
@@ -98,11 +165,9 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <!-- <label class="form-label" for="customFile">Default file input example</label>
-                        <input type="file" class="form-control" id="customFile" /> -->
-                    <!-- <label for="image" class="col-sm-4 col-form-label">Images:</label>
+                    <label for="image" class="col-sm-4 col-form-label">Image  1:</label>
                     <div class="col-sm-8">
-                        <input name="image" type="password" class="form-control"> -->
+                        <input type="file" name="image_1" class="form-control" id="customFile" />
                         {% if messages %}
                         {% for message in messages %}
                             {% if message.extra_tags == 'image' %}
@@ -111,9 +176,35 @@
                         {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button type="submit" class="btn btn-primary centered">Add</button>
+                </div>
+                <div class="row mb-3">
+                    <label for="image" class="col-sm-4 col-form-label">Image 2:</label>
+                    <div class="col-sm-8">
+                        <input type="file" name="image2" class="form-control" id="customFile" />
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'image' %}
+                            <p style="color: red">* {{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
                     </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="image" class="col-sm-4 col-form-label">Image 3:</label>
+                    <div class="col-sm-8">
+                        <input type="file" name="image3" class="form-control" id="customFile" />
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'image' %}
+                            <p style="color: red">* {{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary centered">Add</button>
                 </div>
             </form>
         </div>

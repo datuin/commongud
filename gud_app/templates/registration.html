@@ -134,6 +134,7 @@
                 <form class="form-padding" action="/login" method="post">
                     {% csrf_token %}
                     <br>
+                    <input type="hidden" name ="url" value="/us">
                     <h1 class="h3 mb-3 fw-normal text-center">Log in</h1>
                     <div class=" space d-flex justify-content-around ">
                         <label for="inputEmail" class="visually-hidden">Email address</label>
