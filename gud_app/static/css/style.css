@@ -1,5 +1,13 @@
 body {
     font-family: Montserrat, Helvetica, sans-serif;
+    width:100%;
+}
+
+footer {
+    height: 150px;
+    background-color: #998665;
+    bottom:0;
+    padding-top:50px;
 }
 
 /*********************************** Code for the navbar **********************************************/
@@ -122,17 +130,6 @@ footer {
 
 
 /*********************************** Code for the footer div **********************************************/
-.footer {
-    height: 150px;
-    background-color: #998665;
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-}
 
 .social_list {
     list-style-type:none;
@@ -170,6 +167,14 @@ footer {
 .bottomNav a:active{
     color:#998665;
 }
+
+/*********************************** Code for the index page **********************************************/
+
+.user_name{
+    margin-top:10px;
+    margin-bottom: 0px;
+}    
+
 
 /*********************************** Code for the login popup **********************************************/
 
@@ -224,6 +229,12 @@ footer {
 .form-padding div{
     padding:3px;
 }
+
+.regform {
+    height:100vh;
+    /* used ^^ to fill screen viewer height*/
+}
+
 /*********************************** Code for the messages **********************************************/
 .alert-success {
     color: white;
@@ -231,3 +242,93 @@ footer {
     border-color: #998665;
     margin-top: 5px;
 }
+
+
+/*********************************** Code for the dashboard **********************************************/
+.secondary {
+    margin-top:20px;
+    margin-bottom:50px;
+}
+
+.showall {
+    margin-right:500px;
+    position:relative;
+    left:800px;
+}
+
+.btn {
+    background-color: #998665;
+    color: white;
+    border: none;
+}
+
+.btn:link {
+    background-color: #998665;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color:#b7ae9a;
+    color: white;
+}
+
+.dashboardProduct {
+    margin-top: 20px;
+}
+
+/*********************************** Code for contact **********************************************/
+.banner {
+    height:100vh;
+    background-image: url("https://images.pexels.com/photos/1884583/pexels-photo-1884583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content {
+    margin-left:1000px;
+    padding: 50px;
+    padding-top:100px;
+    padding-left: 600px;
+}
+
+.contactUs{
+    font-size: 32px;
+    color: black;
+    font-weight: bold;
+}
+
+.carousel-inner{
+    height:1200px;
+}
+
+.dd-block{
+    position: relative;
+    padding-bottom:75px;
+}
+
+.carousel-item img {
+}
+
+
+/*********************************** Code for mission **********************************************/
+.mission {
+    padding-top:50px;
+    padding-bottom:300px;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("https://images.pexels.com/photos/5706273/pexels-photo-5706273.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    
+    /* Set a specific height */
+    height: 700px;
+    
+    /* Create the parallax scrolling effect */
+    background-attachment:fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}    

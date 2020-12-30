@@ -87,6 +87,9 @@ def add_template(request):
     }
     return render(request, 'dashboard_add_product.html',context)
 
+def contact(request):
+    return render(request, 'contact_us.html')
+
 def orders(request):
     return render(request, 'dashboard_orders.html')
 

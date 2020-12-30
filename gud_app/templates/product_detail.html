@@ -186,6 +186,13 @@
                     $(".form-popup").toggle();
                 });
                 $("#carouselExampleIndicators").carousel();
+
+                $(".left").click(function(){
+                    $("#myCarousel").carousel("prev");
+                });
+                $(".right").click(function(){
+                    $("#myCarousel").carousel("next");
+                });
             });
 
         </script>

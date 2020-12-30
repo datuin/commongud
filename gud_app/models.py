@@ -61,8 +61,6 @@ class UserManager(BaseUserManager):
             errors['category'] = "Please select a category"
         return errors
 
-
-
     def create_user(self, email, password, first_name, last_name):
         user = self.model(
             email = self.normalize_email(email),
