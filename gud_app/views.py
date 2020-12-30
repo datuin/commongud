@@ -131,40 +131,25 @@ def edit_product_template(request,product_id):
 
 # form to update
 def update_product(request):
-    category = request.POST['category']
-    print(category)
-    product_id = request.POST['product']
     errors = User.objects.validate_product(request.POST)
-
     if errors:
         for key,value in errors.items():
             messages.error(request, value, extra_tags=key)
         return redirect(f'/edit/{product_id}')
 
-    update = Product.objects.get(id=product_id)
-    update.name=request.POST['name']
-    update.description=request.POST['description']
-    update.price=request.POST['price']
-    categoryint = Category.objects.get(id=request.POST['category'])
-    update.product_category=categoryint
-    update.size=request.POST['size']
-    update.color=request.POST['color']
-    update.gender=request.POST['gender']
-    update.save()
-    print('yay me')
-    updateproduct = Product.objects.get(id=product_id)
-    # imageint = Image.
-    print(Image.objects.all().filter(product=product_id))
-    # updateimages = Image.objects.get(id=updateproduct.image_id)
-    # print(updateimages)
-    # updateproduct.updateimages = Image.objects.create(name="image_1", product=product, image=request.FILES['image_1'])
-    allImages=Image.objects.all().filter(product=product_id)
-    for image in allImages:
-        update=image
-        update.image=request.FILES['image_1']
-    # Image.objects.create(name="image_1", product=product, image=request.FILES['image_1'])
-    # Image.objects.create(name="image_2", product=product, image=request.FILES['image_2'])
-    # Image.objects.create(name="image_3", product=product, image=request.FILES['image_3'])
+    Product.objects.filter(id=request.POST['product']).update(
+        name=request.POST['name'],
+        description=request.POST['description'],
+        price=request.POST['price'],
+        product_category = Category.objects.get(id=request.POST['category']),
+        size=request.POST['size'],
+        color=request.POST['color'],
+        gender=request.POST['gender']
+    )
+    images = request.FILES.getlist('images')
+    for i, model in enumerate(Image.objects.filter(product=request.POST['product'])):
+        model.image = images[i]
+        model.save()
     return redirect("/dashboard/products")
 
 def delete_product(request,product_id):
