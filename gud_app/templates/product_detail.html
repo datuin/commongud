@@ -105,33 +105,24 @@
     <div class="main-container container-fliud">
         <div class="container-lg d-flex justify-content-around">
             <div class="photos">
-                <a class="getback" href="/us/{{product.gender}}"><i class="fa fa-arrow-left"
+                <!-- <a class="getback" href="/us/{{product.gender}}"><i class="fa fa-arrow-left"
                         aria-hidden="true"></i>Back</a>
-                <br>
+                <br> -->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" class="item1" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" class="item2" data-slide-to="1"></li>
                         <li data-target="#myCarousel" class="item3" data-slide-to="2"></li>
                     </ol>
-                    <div style=" height: 500px;
-                    width: 359px;" class="carousel-inner">
+                    <div class="carousel-inner" style="height:734px;width:592px;">
                         {% with product.images.all as images %}
                         {% for image in images %}
                         {% if forloop.first %}
-                        <div style="height: 500px;" class="carousel-item active">
-                            <img style="position: absolute;
-                                    object-fit:cover;
-                                    top: 0;
-                                    left: 0;
-                                    min-height: 500px;" class="image-size" src="{{ image.image.url }}">
+                        <div class="carousel-item active">
+                            <img class="image-size" src="{{ image.image.url }}">
                         </div>
                         {% else %}
-                        <div style="position: absolute;
-                                object-fit:cover;
-                                top: 0;
-                                left: 0;
-                                min-height: 500px;" class="carousel-item">
+                        <div class="carousel-item">
                             <img class="image-size" src="{{ image.image.url }}">
                         </div>
                         {% endif %}
@@ -150,21 +141,19 @@
             </div>
             <div>
                 <div class="details_product">
-                    <h4>{{product.product_category.name}} . {{product.gender}}</h4>
-                    <br>
+                    <!-- <h4>{{product.product_category.name}} . {{product.gender}}</h4>
+                    <br> -->
                     <h3>{{product.name}}</h3>
-                    <h6>{{product.color}}</h6>
+                    <p>{{product.description}}</p>
                     <br>
-                    <h3>{{product.price}}</h3>
+                    <p>{{product.color}}</p>
+                    <h6>{{product.price}}</h6>
                     <br>
                     <br>
                     <form action="/add_tocart" method="POST">
                         {% csrf_token %}
                         <h5>Select size:</h5>
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text">Size</label>
-                            </div>
                             <select class="custom-select" name ="size" id="inputGroupSelect01">
                                 <option value="S">S</option>
                                 <option value="M">M</option>
@@ -189,59 +178,59 @@
                 </div>
             </div>
         </div>
-        <br>
-        <div class="container-md d-flex justify-content-around">
+        <!-- <br> -->
+        <!-- <div class="container-md d-flex justify-content-around">
             <h4>other details</h4>
             <h4></h4>
             <h4></h4>
         </div>
-        <br>
-        <div class="container-md d-flex justify-content-around">
+        <br> -->
+        <!-- <div class="container-md d-flex justify-content-around">
             <p>{{product.description}}</p>
             <p></p>
             <p></p>
-        </div>
+        </div> -->
     </div>
 </body>
 
 <footer>
-    <div class="container-sm d-flex justify-content-center">
-        <div class="container-fluid">
+    <div class="position-relative container-sm d-flex justify-content-center">
+        <div class="position-relative container-fluid">
             <h6>Stay Connected</h6>
             <ul class="social_list">
-                <li><a href=""><img class="social"
-                            src="https://cdn2.iconfinder.com/data/icons/social-media-2151/512/2_Media_social_website_instagram-512.png"></a>
+                <li><a href="https://www.instagram.com"><img class="social"
+                            src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Instagram_svg-512.png"></a>
                 </li>
-                <li><a href=""><img class="social"
+                <li><a href="https://www.twitter.com"><img class="social"
                             src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Twitter_social_media_logo-512.png"></a>
                 </li>
-                <li><a href=""><img class="social"
+                <li><a href="https://www.facebook.com"><img class="social"
                             src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Facebook_social_media_logo-512.png"></a>
                 </li>
-                <li><a href=""><img class="social"
+                <li><a href="https://www.youtube.com"><img class="social"
                             src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Youtube_svg-512.png"></a>
                 </li>
             </ul>
         </div>
-        <div class=" container-fluid">
+        <div class="container-fluid">
             <h6>Shop</h6>
             <list class="bottomNav">
-                <li><a href="">Men</a></li>
-                <li><a href="">Women</a></li>
+                <li><a href="/us/men">Men</a></li>
+                <li><a href="/us/women">Women</a></li>
             </list>
         </div>
         <div class="container-fluid">
             <h6>About commongüd</h6>
             <list class="bottomNav">
-                <li><a href="">Our Mission</a></li>
-                <li><a href="">Contact Us</a></li>
+                <li><a href="/mission">Our Mission</a></li>
+                <li><a href="/contact">Contact Us</a></li>
             </list>
         </div>
         <div class="container-fluid">
             <h6>Members</h6>
             <list class="bottomNav">
-                <li><a href="">Register</a></li>
-                <li><a href="">Log In</a></li>
+                <li><a href="/registration">Register</a></li>
+                <li><a href="/registration">Log In</a></li>
             </list>
         </div>
     </div>
