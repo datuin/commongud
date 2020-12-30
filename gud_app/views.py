@@ -128,3 +128,6 @@ def add_categories(request):
     name= request.POST['addcategory']
     Category.objects.create(name=name)
     return redirect("/dashboard/products/add")
+
+def product_detail_template(request,product_id):
+    return render(request,"product_detail.html")
