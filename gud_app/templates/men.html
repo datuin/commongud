@@ -95,7 +95,7 @@
                 <div class="container">
                     <br>
                     <h1>Men</h1>
-                    <div class="container">
+                    <div class="container"> 
                         <div class="row">
                             <div class="container">
                             {% regroup products by product_category.name as product_categories %}
@@ -106,7 +106,7 @@
                                             <div class="card" style="margin-right:25px; padding: 4px 4px 4px 4px; width: 24rem;">
                                                 <a href="/product_detail/{{product.id}}">
                                                     {% with product.images.all|first as image %}
-                                                    <img src="{{ image.image.url }}">
+                                                    <img class="mensproducts" src="{{ image.image.url }}">
                                                     {% endwith %}
                                                 </a>
                                                 <div class="card-body">
