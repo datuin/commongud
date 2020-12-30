@@ -78,7 +78,7 @@
                         {% for product_display in products %}
                         <tr>
                             {% with product_display.images.all|first as image %}
-                            <th><img src="{{ image.image.url }}" alt="logo" width="50" height="50"></th>
+                            <th><img src="{{ image.image.url }}"alt="logo" width="50" height="50">
                             {% endwith %}
                             <td scope="row">{{product_display.id}}</td>
                             <td>{{product_display.name}}</td>

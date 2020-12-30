@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
-from gud_app.models import User, Category, Product , Image
+from gud_app.models import User, Category, Product , Image ,Order , OrderItem
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
@@ -12,7 +12,6 @@ def index(request):
 
 def men(request):
     all_products = Product.objects.all()
-    print("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeetoooo")
     print(all_products.first().images.first().image.url)
     context= {
         'products': all_products
@@ -104,7 +103,6 @@ def add_product(request):
             messages.error(request, value, extra_tags=key)
         return redirect("/dashboard/products/add")
 
-    print("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
     print(request.FILES['image_1'].name)
     product = Product.objects.create(
         name=request.POST['name'],
@@ -187,4 +185,25 @@ def add_categories(request):
     return redirect("/dashboard/products/add")
 
 def product_detail_template(request,product_id):
-    return render(request,"product_detail.html")
+    product = Product.objects.get(id= product_id)
+    context={
+        'product':product
+    }
+
+    return render(request,"product_detail.html",context)
+
+def orders_template(request):
+    cart_orders = OrderItem.objects.all()
+    context ={
+        'orderItems' : cart_orders
+    }
+    return render(request, "orders.html", context)
+
+def add_tocart(request):
+    product_id = request.POST["product"]
+    product= Product.objects.get(id=product_id)
+    product_price= product.price
+    size = request.POST["size"]
+    quantity = 1
+    OrderItem.objects.create(product= product, quantity = quantity, size=size,price = product_price )
+    return redirect(f"product_detail/{product_id}")

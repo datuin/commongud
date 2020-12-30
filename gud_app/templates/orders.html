@@ -49,7 +49,7 @@
                 <input class="form form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn" type="submit">Search</button>
                 <a class="nav-link" id="wishlist" href="#"><i href="#" class="fa fa-heart " aria-hidden="true"></i></a>
-                <a class="nav-link" id="cart" href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                <a class="nav-link" id="cart" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                 {% if user.is_authenticated %}
                 <p class="user_name">Hello, {{user.first_name}} </p>
                 {% else %}
@@ -103,103 +103,79 @@
     </nav>
     <br>
     <div class="main-container container-fliud">
-        <div class="container-lg d-flex justify-content-around">
-            <div class="photos">
-                <a class="getback" href="/us/{{product.gender}}"><i class="fa fa-arrow-left"
-                        aria-hidden="true"></i>Back</a>
-                <br>
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" class="item1" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" class="item2" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" class="item3" data-slide-to="2"></li>
-                    </ol>
-                    <div style=" height: 500px;
-                    width: 359px;" class="carousel-inner">
-                        {% with product.images.all as images %}
-                        {% for image in images %}
-                        {% if forloop.first %}
-                        <div style="height: 500px;" class="carousel-item active">
-                            <img style="position: absolute;
-                                    object-fit:cover;
-                                    top: 0;
-                                    left: 0;
-                                    min-height: 500px;" class="image-size" src="{{ image.image.url }}">
-                        </div>
-                        {% else %}
-                        <div style="position: absolute;
-                                object-fit:cover;
-                                top: 0;
-                                left: 0;
-                                min-height: 500px;" class="carousel-item">
-                            <img class="image-size" src="{{ image.image.url }}">
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        {% endwith %}
-                    </div>
-                    <a class="left carousel-control-prev" data-target="#myCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control-next" data-target="#myCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+        <div class=" d-flex justify-content-around">
             <div>
-                <div class="details_product">
-                    <h4>{{product.product_category.name}} . {{product.gender}}</h4>
+                <h1>Your Cart</h1>
+                <P>Total : ( 4 items) $ price</P>
+                {% for item in orderItems %}
+                <div class=" item d-flex justify-content-around ">
+                    <img src="{{ item.product.image.url }}">
+                    <div>
+                        <p>{{item.product.name}}</p>
+                        <p>{{item.product.color}}</p>
+                        <p>{{item.size}}</p>
+                        <select name="quantity" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="3">4</option>
+                            <option value="3">5</option>
+                        </select>
+                    </div>
+                    <div class="cross">
+                        <a href=""><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="heart">
+                        <a href=""><i href="#" class="fa fa-heart " aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+                <br>
+                <button class="btn cjeckout">Checkout</button>
+            </div>
+            <div class="order-summry">
+                <button class="btn cjeckout">Checkout</button>
+                <div>
                     <br>
-                    <h3>{{product.name}}</h3>
-                    <h6>{{product.color}}</h6>
+                    <h2>Order Summary</h2>
                     <br>
-                    <h3>{{product.price}}</h3>
-                    <br>
-                    <br>
-                    <form action="/add_tocart" method="POST">
-                        {% csrf_token %}
-                        <h5>Select size:</h5>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text">Size</label>
-                            </div>
-                            <select class="custom-select" name ="size" id="inputGroupSelect01">
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                            </select>
-                        </div>
-                        <div class="buy-items d-flex justify-content-between">
-                            <div>
-                                <button type="submit" class="btn btn-size">Add to cart</button>
-                            </div>
-                            <div class="wishtag">
-                                <a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                            </div>
-                            <div>
-                                <div>
-                                    <input type="hidden" name="product" value="{{product.id}}">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <div>
+                        <table class="summary">
+                            <tr>
+                                <td>Item name</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Total</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <br>
-        <div class="container-md d-flex justify-content-around">
-            <h4>other details</h4>
-            <h4></h4>
-            <h4></h4>
+        <div class="d-flex justify-content-around">
+            <h5>Top Picks for You</h5>
         </div>
-        <br>
-        <div class="container-md d-flex justify-content-around">
-            <p>{{product.description}}</p>
-            <p></p>
-            <p></p>
+        <div style="display: inline-flex;" class="col-sm">
+            <div class="card" style="margin-right:25px; padding: 4px 4px 4px 4px; width: 24rem;">
+                <a href="/product_detail/{{product.id}}">
+                    {% with product.images.all|first as image %}
+                    <img src="{{ image.image.url }}">
+                    {% endwith %}
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price}}</p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </body>
@@ -251,23 +227,6 @@
     $(document).ready(function () {
         $("#user_icon").on("click", function () {
             $(".form-popup").toggle();
-        });
-        $("#myCarousel").carousel();
-        $(".left").click(function () {
-            $("#myCarousel").carousel("prev");
-        });
-        $(".right").click(function () {
-            $("#myCarousel").carousel("next");
-        });
-        // Enable Carousel Indicators
-        $(".item1").click(function () {
-            $("#myCarousel").carousel(0);
-        });
-        $(".item2").click(function () {
-            $("#myCarousel").carousel(1);
-        });
-        $(".item3").click(function () {
-            $("#myCarousel").carousel(2);
         });
     });
 </script>
