@@ -43,6 +43,15 @@ class UserManager(BaseUserManager):
             errors['email_notexist']= "This email does not exist"
         return errors
 
+    def validate_category(self, postData):
+        errors = {}
+
+        if len(postData['addcategory']) == 0:
+            errors['addcategory'] = "Please enter a category"
+        if Category.objects.filter(name=postData['addcategory']).exists():
+            errors['category_exists'] = 'Invalid: Category already exists.'
+        return errors
+
     def validate_product(self, postData):
         errors = {}
         if len(postData['name']) < 2:
@@ -102,6 +111,7 @@ class Category(models.Model):
     name = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManager()
 
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
