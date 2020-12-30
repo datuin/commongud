@@ -103,6 +103,7 @@ def add_product(request):
             messages.error(request, value, extra_tags=key)
         return redirect("/dashboard/products/add")
 
+    print("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
     print(request.FILES['image_1'].name)
     product = Product.objects.create(
         name=request.POST['name'],

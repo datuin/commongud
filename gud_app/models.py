@@ -121,6 +121,13 @@ class Order(models.Model):
     size = models.CharField(max_length=45)
     #products = all products from this order
 
+class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    user_order = models.ForeignKey(User, related_name="orders_from_user", on_delete= models.CASCADE)
+    quantity = models.CharField(max_length=45)
+    total =  models.CharField(max_length=45)
+    #product_order = all products from this order
+
 class Product(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=45)
