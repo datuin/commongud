@@ -115,8 +115,56 @@ def add_product(request):
         gender=request.POST['gender']
     )
     Image.objects.create(name="image_1", product=product, image=request.FILES['image_1'])
-    Image.objects.create(name="image_2", product=product, image=request.FILES['image_1'])
-    Image.objects.create(name="image_3", product=product, image=request.FILES['image_1'])
+    Image.objects.create(name="image_2", product=product, image=request.FILES['image_2'])
+    Image.objects.create(name="image_3", product=product, image=request.FILES['image_3'])
+    return redirect("/dashboard/products")
+
+# views edit template
+def edit_product_template(request,product_id):
+    product = Product.objects.get(id=product_id)
+    all_categories = Category.objects.all()
+    context = {
+        'product': product,
+        'category': all_categories,
+    }
+    return render(request,'dashboard_edit_product.html', context)
+
+# form to update
+def update_product(request):
+    category = request.POST['category']
+    print(category)
+    product_id = request.POST['product']
+    errors = User.objects.validate_product(request.POST)
+
+    if errors:
+        for key,value in errors.items():
+            messages.error(request, value, extra_tags=key)
+        return redirect(f'/edit/{product_id}')
+
+    update = Product.objects.get(id=product_id)
+    update.name=request.POST['name']
+    update.description=request.POST['description']
+    update.price=request.POST['price']
+    categoryint = Category.objects.get(id=request.POST['category'])
+    update.product_category=categoryint
+    update.size=request.POST['size']
+    update.color=request.POST['color']
+    update.gender=request.POST['gender']
+    update.save()
+    print('yay me')
+    updateproduct = Product.objects.get(id=product_id)
+    # imageint = Image.
+    print(Image.objects.all().filter(product=product_id))
+    # updateimages = Image.objects.get(id=updateproduct.image_id)
+    # print(updateimages)
+    # updateproduct.updateimages = Image.objects.create(name="image_1", product=product, image=request.FILES['image_1'])
+    allImages=Image.objects.all().filter(product=product_id)
+    for image in allImages:
+        update=image
+        update.image=request.FILES['image_1']
+    # Image.objects.create(name="image_1", product=product, image=request.FILES['image_1'])
+    # Image.objects.create(name="image_2", product=product, image=request.FILES['image_2'])
+    # Image.objects.create(name="image_3", product=product, image=request.FILES['image_3'])
     return redirect("/dashboard/products")
 
 def delete_product(request,product_id):
@@ -126,7 +174,13 @@ def delete_product(request,product_id):
     return redirect("/dashboard/products")
 
 def add_categories(request):
-    name= request.POST['addcategory']
+    errors = User.objects.validate_category(request.POST)
+
+    if len(errors)>0:
+        for key,value in errors.items():
+            messages.error(request, value, extra_tags=key)
+        return redirect("/dashboard/products/add")
+    name = request.POST['addcategory']
     Category.objects.create(name=name)
     return redirect("/dashboard/products/add")
 

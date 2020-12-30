@@ -25,6 +25,8 @@ urlpatterns = [
     path('product_detail/<int:product_id>',views.product_detail_template),
     path('cart',views.orders_template),
     path('add_tocart',views.add_tocart)
+    path('edit/<int:product_id>', views.edit_product_template),
+    path('update', views.update_product),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
