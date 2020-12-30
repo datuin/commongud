@@ -4,10 +4,12 @@ import re
 
 # Create your models here.
 
-#Tables // User, Products, Categories, wishlist
+#Tables // User, Products, Categories, wishlist, orders, billing
 # User - Products 1- to many
 # Products - Category 1 to many
 # Wishlist - Products 1 to many
+# orders from user 1 yo many from products many to many
+# billing addres from user 1 to many
 
 class UserManager(BaseUserManager):
 
@@ -41,6 +43,24 @@ class UserManager(BaseUserManager):
             errors['email_notexist']= "This email does not exist"
         return errors
 
+    def validate_product(self, postData):
+        errors = {}
+        if len(postData['name']) < 2:
+            errors['name'] = "Please insert a valid name"
+        if len(postData['description']) < 10:
+            errors['description'] = "Please be more specific"
+        if len(postData['price']) < 2:
+            errors['price'] = "Please insert a valid price"
+        if len(postData['size']) < 0:
+            errors['size'] = "Please select a size"
+        if len(postData['color']) < 2:
+            errors['color'] = "Please insert a valid color"
+        if len(postData['gender']) < 0:
+            errors['gender'] = "Please select a gender"
+        if len(postData['category']) < 0:
+            errors['category'] = "Please select a category"
+        return errors
+
     def create_user(self, email, password, first_name, last_name):
         user = self.model(
             email = self.normalize_email(email),
@@ -48,6 +68,18 @@ class UserManager(BaseUserManager):
             last_name = last_name
         )
         user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None):
+        user = self.create_user(
+            email = self.normalize_email(email),
+            password=password,
+            first_name = 'Admin',
+            last_name = 'name'
+        )
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -71,20 +103,32 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    user_order = models.ForeignKey(User, related_name="orders_from_user", on_delete= models.CASCADE)
+    quantity = models.CharField(max_length=45)
+    total =  models.CharField(max_length=45)
+    #product_order = all products from this order
+
 class Product(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=45)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    image = models.ImageField(default=None)
     product_category = models.ForeignKey(Category,related_name="products", on_delete= models.CASCADE)
     user = models.ForeignKey(User, related_name="products_from_user", on_delete= models.CASCADE)
+    product_order = models.ManyToManyField(Order, related_name="orders")
     size = models.CharField(max_length=45)
     color = models.CharField(max_length=45)
     gender = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()
 
 class Wishlist(models.Model):
     wish_product = models.ForeignKey(Product, related_name="wishlist", on_delete = models.CASCADE)
     quantity = models.IntegerField()
+
+class Image(models.Model):
+    name = models.CharField(max_length=255)
+    product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+    default = models.BooleanField(default=False)

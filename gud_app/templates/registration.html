@@ -39,7 +39,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="regform container-fluid">
         <div class="container  d-flex justify-content-around">
             <div class="container-md reg">
                 <form class="form-padding" action="/signup" method="post">
@@ -134,6 +134,7 @@
                 <form class="form-padding" action="/login" method="post">
                     {% csrf_token %}
                     <br>
+                    <input type="hidden" name ="url" value="/us">
                     <h1 class="h3 mb-3 fw-normal text-center">Log in</h1>
                     <div class=" space d-flex justify-content-around ">
                         <label for="inputEmail" class="visually-hidden">Email address</label>
@@ -178,16 +179,49 @@
         </div>
     </div>
 </body>
-<!-- footer section -->
-<div class="footer container-fluid">
-    <div>
-        <img class="fSmile" src="{% static 'images/umlaut.svg' %}">
-        <br>
+
+<footer>
+    <div class="footerContent container-sm d-flex justify-content-center">
+        <div class="container-fluid">
+            <h6>Stay Connected</h6>
+            <ul class="social_list">
+                <li><a href=""><img class="social"
+                            src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Instagram_svg-512.png"></a>
+                </li>
+                <li><a href=""><img class="social"
+                            src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Twitter_social_media_logo-512.png"></a>
+                </li>
+                <li><a href=""><img class="social"
+                            src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Facebook_social_media_logo-512.png"></a>
+                </li>
+                <li><a href=""><img class="social"
+                            src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Youtube_svg-512.png"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid">
+            <h6>Shop</h6>
+            <list class="bottomNav">
+                <li><a href="/us/men">Men</a></li>
+                <li><a href="/us/women">Women</a></li>
+            </list>
+        </div>
+        <div class="container-fluid">
+            <h6>About commongüd</h6>
+            <list class="bottomNav">
+                <li><a href="/mission">Our Mission</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </list>
+        </div>
+        <div class="container-fluid">
+            <h6>Members</h6>
+            <list class="bottomNav">
+                <li><a href="/registration">Register</a></li>
+                <li><a href="/registration">Log In</a></li>
+            </list>
+        </div>
     </div>
-    <div>
-        <h6>Add a smile with your style.</h6>
-    </div>
-</div>
+</footer>
 
 <!-- Jquery section -->
 <script type="text/javascript">

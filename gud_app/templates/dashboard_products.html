@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>commongüd - Dashboard Products</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #998665;">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="container">
+                <a class="navbar-brand" href="/us">
+                    <img src="{% static 'images/logo.svg' %}" alt="logo" width="250" height="100">
+                </a>
+            </div>
+            <div class="container-sm">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Products</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-sm">
+                <a class="nav-link active" aria-current="page" href="">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="position-relative">
+        <div class="secondary container-sm d-flex justify-content-between">
+            <div class="container-sm">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" width:>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="showall container-sm">
+                <div class="btn-group">
+                    <form action="/go_to_add_product">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Add a Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative">
+            <div class="container-sm">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Picture</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price</th>
+                            <!-- <th scope="col">Inventory Count</th>
+                            <th scope="col">Quantity Sold</th> -->
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- This nested loop is wrong, here you may display one single image -->
+                        <!-- and then show all the images for each product at /edit  -->
+                        {% for product_display in products %}
+                        {% for image in images%}
+                        <tr>
+                            <th><img src="{{ image.image.url }}" alt="logo" width="50" height="50"></th>
+                            <td scope="row">{{product_display.id}}</td>
+                            <td>{{product_display.name}}</td>
+                            <td>{{product_display.product_category.name}}</td>
+                            <td>{{product_display.price}}</td>
+                            <td>
+                                <a href="">edit</a>
+                                <a id="delete-product"  href="/delete/{{product_display.id}}">delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.extra_tags == 'product_deleted' %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+        <div class="container-sm d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#user_icon").on("click", function () {
+            $(".form-popup").toggle();
+        });
+    });
+</script>
+
+</html>
